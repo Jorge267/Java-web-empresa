@@ -50,6 +50,8 @@
                 </select>
                 <br>
                 <button name="btn_agregar" class="btn btn-primary" value="agregar">Agregar</button>
+                <button name="btn_modificar" class="btn btn-primary" value="modificar">Modificar</button>
+
             </form>
             
         </div>

@@ -40,7 +40,8 @@ public class Empleado extends Persona {
     }
     
     @Override
-    public void agregar(){
+    public int agregar(){
+        int retorno = 0;
         try{           
             cn = new Conexion();
             PreparedStatement parametro;
@@ -56,12 +57,14 @@ public class Empleado extends Persona {
             parametro.setString(6, getFecha_nacimiento());
             parametro.setInt(7, getId_puesto());
             
-            parametro.executeUpdate();
+            retorno = parametro.executeUpdate();
             
             cn.cerrar_conexion();
         }catch(SQLException ex){
             System.out.println("Error..." + ex.getMessage());
+            retorno = 0;
         }
+        return retorno;
     }
     
 }
