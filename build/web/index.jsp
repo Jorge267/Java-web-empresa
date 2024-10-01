@@ -17,7 +17,7 @@
     <body>
         <h1>Formulario Empleados</h1>
         <div class "container">
-            <form action="" method="post" class="form-group">
+            <form action="sr_empleado" method="post" class="form-group">
                 <label for="lbl_codigo"><b>Codigo:</b></label>
                 <input type="text" name="txt_codigo" id="txt_codigo" class="form-control" placeholder="Ejemplo: 0001" required=</input>
                 
@@ -36,11 +36,11 @@
                 <label for="lbl_fn"><b>Fecha de Nacimiento</b></label>
                 <input type="date" name="txt_fn" id="txt_fn" class="form-control" placeholder="Ejemplo: YYYY/MM/DD" required=</input>
                 
-                <label for="lbl_sangre"><b>Tipo de Sangre</b></label>
-                <select name="drop_sangre" id="drop_sangre" class="form-control">
+                <label for="lbl_puesto"><b>Puesto</b></label>
+                <select name="drop_puesto" id="drop_puesto" class="form-control">
                     <%
                         Puesto puesto = new Puesto();
-                        HashMap<String, String> drop = puesto.drop_sangre();
+                        HashMap<String, String> drop = puesto.drop_puesto();
                         for(String i: drop.keySet()){
                             out.println("<option value='" + i + "'>" + drop.get(i) + "</option>");
                         }  
@@ -49,7 +49,7 @@
                     
                 </select>
                 <br>
-                <button type="button" name="btn_agregar" class="btn btn-primary">Agregar</button>
+                <button name="btn_agregar" class="btn btn-primary" value="agregar">Agregar</button>
             </form>
             
         </div>

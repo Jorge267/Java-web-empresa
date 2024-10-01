@@ -35,7 +35,7 @@ public class Puesto {
         this.puesto = puesto;
     }
     
-    public HashMap drop_sangre(){
+    public HashMap drop_puesto(){
         HashMap<String, String> drop = new HashMap();
         
         try{

@@ -6,6 +6,7 @@ package modelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.sql.PreparedStatement;
 
 
 public class Empleado extends Persona {
@@ -40,7 +41,27 @@ public class Empleado extends Persona {
     
     @Override
     public void agregar(){
-        
+        try{           
+            cn = new Conexion();
+            PreparedStatement parametro;
+            
+            String query = "INSERT INTO empleados (codigo, nombres, apellidos, direccion, telefono, fecha_nacimiento, id_puesto) VALUES (?,?,?,?,?,?,?);";
+            cn.abrir_conexion();
+            parametro = (PreparedStatement)cn.conexionBD.prepareStatement(query);
+            parametro.setString(1, getCodigo());
+            parametro.setString(2, getNombres());
+            parametro.setString(3, getApellidos());
+            parametro.setString(4, getDireccion());
+            parametro.setString(5, getTelefono());
+            parametro.setString(6, getFecha_nacimiento());
+            parametro.setInt(7, getId_puesto());
+            
+            parametro.executeUpdate();
+            
+            cn.cerrar_conexion();
+        }catch(SQLException ex){
+            System.out.println("Error..." + ex.getMessage());
+        }
     }
     
 }
