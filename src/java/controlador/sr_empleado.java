@@ -42,7 +42,7 @@ public class sr_empleado extends HttpServlet {
             
             
             if("agregar".equals(request.getParameter("btn_agregar"))){
-                empleado  = new Empleado(request.getParameter("txt_codigo"),Integer.parseInt(request.getParameter("drop_puesto")),0,request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"),request.getParameter("txt_fn"));
+                empleado  = new Empleado(request.getParameter("txt_codigo"),Integer.parseInt(request.getParameter("drop_puesto")),Integer.parseInt(request.getParameter("txt_id")),request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"),request.getParameter("txt_fn"));
                     if(empleado.agregar()>0){
                         response.sendRedirect("index.jsp");
                     }else{
@@ -50,6 +50,29 @@ public class sr_empleado extends HttpServlet {
                         out.println("<a href ='index.jsp'>Regresar</a>");
                     }
             }
+            
+             
+            if("modificar".equals(request.getParameter("btn_modificar"))){
+                empleado  = new Empleado(request.getParameter("txt_codigo"),Integer.parseInt(request.getParameter("drop_puesto")),Integer.parseInt(request.getParameter("txt_id")),request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"),request.getParameter("txt_fn"));
+                    if(empleado.modificar()>0){
+                        response.sendRedirect("index.jsp");
+                    }else{
+                        out.println("<h1>Error al actualizar el registro</h1>");
+                        out.println("<a href ='index.jsp'>Regresar</a>");
+                    }
+            }
+            
+             
+            if("eliminar".equals(request.getParameter("btn_eliminar"))){
+                empleado  = new Empleado(request.getParameter("txt_codigo"),Integer.parseInt(request.getParameter("drop_puesto")),Integer.parseInt(request.getParameter("txt_id")),request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"),request.getParameter("txt_fn"));
+                    if(empleado.eliminar()>0){
+                        response.sendRedirect("index.jsp");
+                    }else{
+                        out.println("<h1>Error al eliminar el registro</h1>");
+                        out.println("<a href ='index.jsp'>Regresar</a>");
+                    }
+            }
+            
             out.println("</body>");
             out.println("</html>");
         }
