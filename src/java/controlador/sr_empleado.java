@@ -44,8 +44,7 @@ public class sr_empleado extends HttpServlet {
             if("agregar".equals(request.getParameter("btn_agregar"))){
                 empleado  = new Empleado(request.getParameter("txt_codigo"),Integer.parseInt(request.getParameter("drop_puesto")),0,request.getParameter("txt_nombres"),request.getParameter("txt_apellidos"),request.getParameter("txt_direccion"),request.getParameter("txt_telefono"),request.getParameter("txt_fn"));
                     if(empleado.agregar()>0){
-                        out.println("<h1>Registro ingresado exitosamente</h1>");
-                        out.println("<a href ='index.jsp'>Regresar</a>");
+                        response.sendRedirect("index.jsp");
                     }else{
                         out.println("<h1>Error al insertar el registro</h1>");
                         out.println("<a href ='index.jsp'>Regresar</a>");
